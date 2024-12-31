@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeCine Mod - Download</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<nav class="navbar">
+    <div class="nav-content">
+        <div class="logo">FreeCine<span>Mod</span></div>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="hero-content" data-aos="fade-up">
+        <img src="icon.webp" alt="FreeCine Mod Icon" class="app-icon animate-float">
+        <h1 class="glowing-text">FreeCine Mod</h1>
+        <p class="hero-description">Watch your favorite movies and TV shows in HD quality</p>
+        <div class="download-stats">
+            <div class="stat animate-pulse">
+                <i class="fas fa-download"></i>
+                <span id="downloadCounter">0</span> Downloads
+            </div>
+            <div class="stat">
+                <i class="fas fa-star"></i>
+                <span>4.8</span> Rating
+            </div>
+        </div>
+        <a href="/download" class="download-btn">
+            <i class="fas fa-download"></i>
+            Download APK
+            <span class="version">v4.0.0</span>
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <section class="features">
+        <h2 data-aos="fade-up">Features</h2>
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-tv"></i>
+                <h3>HD Streaming</h3>
+                <p>Crystal clear video quality</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-ban"></i>
+                <h3>Ad-Free</h3>
+                <p>No interruptions while watching</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-closed-captioning"></i>
+                <h3>Subtitles</h3>
+                <p>Multiple language support</p>
+            </div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-download"></i>
+                <h3>Downloads</h3>
+                <p>Watch offline anytime</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="installation">
+        <h2 data-aos="fade-up">How to Install</h2>
+        <div class="steps">
+            <div class="step" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-number">1</div>
+                <h3>Download APK</h3>
+                <p>Click the download button above</p>
+            </div>
+            <div class="step" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-number">2</div>
+                <h3>Allow Installation</h3>
+                <p>Enable "Unknown Sources" in settings</p>
+            </div>
+            <div class="step" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-number">3</div>
+                <h3>Install & Enjoy</h3>
+                <p>Open APK and install the app</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2 data-aos="fade-up">Need Help?</h2>
+        <p data-aos="fade-up">Having issues with the app? Contact me directly on Facebook</p>
+        <a href="https://www.facebook.com/apostol.joshua0" target="_blank" class="facebook-btn" data-aos="zoom-in">
+            <i class="fab fa-facebook"></i>
+            <span>Contact on Facebook</span>
+        </a>
+    </section>
+</div>
+
+<footer>
+    <p>© 2024 FreeCine Mod. All rights reserved.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true
+    });
+
+    async function updateDownloadCount() {
+        try {
+            const response = await fetch('/api/downloads');
+            const data = await response.json();
+            document.getElementById('downloadCounter').textContent = data.count;
+        } catch (error) {
+            console.error('Error fetching download count:', error);
+        }
+    }
+
+    updateDownloadCount();
+    setInterval(updateDownloadCount, 30000);
+</script>
+
+</body>
+
+</html>
